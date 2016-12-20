@@ -152,3 +152,11 @@ NodeList.prototype.setTitle = HTMLCollection.prototype.setTitle = function(title
 	if(el) {el.setTitle(title);}
     }
 }
+
+/*
+ * find elements inside other one
+ */
+Element.prototype.find = function(queryStr){
+  var selector = document.querySelectorAll(queryStr);
+  return (selector.length>0 ? (selector.length>1 ? selector : selector[0] ) : null );
+}
