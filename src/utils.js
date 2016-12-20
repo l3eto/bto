@@ -4,90 +4,151 @@
  * created: 19/12/16
  */
 
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
+
+/*
+ * Add and Remove ClassName
+ */
+Element.prototype.addClassName = function(addClasses) {
+    if(this.className.length==0){this.className=addClasses;}
+    else if(addClasses.length>0){
+        var oldClasses = this.className.split(" ");
+        var newClasses = addClasses.split(" ");
+        for (var i = 0; i < newClasses.length; i++) {
+            var addClass = true;
+            var newClass = newClasses[i];
+            for (var j = 0; j < oldClasses.length; j++) {if(newClass==oldClasses[j]){addClass=false;}}
+            if(addClass){this.className+=" "+newClass;}
+    	}
+    }
 }
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = this.length - 1; i >= 0; i--) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
+Element.prototype.removeClassName = function(removeClasses){
+    if(this.className.length>0){
+        var oldClasses = this.className.split(" ");
+	var delClasses = removeClasses.split(" ");
+	this.className="";
+	for (var i = 0; i < oldClasses.length; i++) {
+            var removeClass = false;
+            var oldClass = oldClasses[i];
+            for (var j = 0; j < delClasses.length; j++) {if(oldClass==delClasses[j]){removeClass=true;}}
+            if(!removeClass){this.addClassName(oldClass);}
         }
     }
 }
 
-Element.prototype.removeAfter = function(seconds) {
-	var that = this;
-	setTimeout(function(){ that.parentElement.removeChild(that); }, seconds*1000);
+/*
+ * Remove element or list elements
+ */
+Element.prototype.remove = function(seconds) {
+    var el = this;
+    setTimeout(function(){el.parentElement.removeChild(el);}, (seconds ? seconds : 0)*1000);
 }
-NodeList.prototype.removeAfter = HTMLCollection.prototype.removeAfter = function(seconds) {
-	var that = this;
-	setTimeout(function(){
-	    for(var i = that.length - 1; i >= 0; i--) {
-	        if(that[i] && that[i].parentElement) {
-	            that[i].parentElement.removeChild(that[i]);
-	        }
-	    }
-	}, seconds*1000);
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function(seconds) {
+    var li = this;
+    setTimeout(function(){for(var i = li.length - 1; i >= 0; i--) {
+	var el = li[i];
+	if(el && el.parentElement) {el.remove();}
+    }}, (seconds ? seconds : 0)*1000);
 }
 
+/*
+ * Modify display getter and setter
+ */
 Element.prototype.getDisplay = function(){
-  return this.style.display;
+    return this.style.display;
 }
 NodeList.prototype.getDisplay = HTMLCollection.prototype.getDisplay = function() {
-  return this.style.display;
+    var ret = [];
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {ret.push(el.getDisplay());}
+    }
+    return ret;
 }
-
 Element.prototype.setDisplay = function(display){
-  this.style.display = display;
+    this.style.display = display;
 }
 NodeList.prototype.setDisplay = HTMLCollection.prototype.setDisplay = function(display) {
-  this.style.display = display;
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.setDisplay(display);}
+    }
 }
 
+/*
+ * Lock or unlock input
+ */
 Element.prototype.lockInput= function() {
-	this.save = this.value;
-	this.value = null;
-    this.disabled='disabled';
+    if(this.tagName=='INPUT'){
+        this.save = this.value;
+        this.value = null;
+        this.disabled='disabled';
+    }
 }
 NodeList.prototype.lockInput = HTMLCollection.prototype.lockInput = function() {
-	this.save = this.value;
-	this.value = null;
-	this.disabled='disabled';
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.lockInput();}
+    }
 }
-
 Element.prototype.unlockInput= function() {
-	if(this.save){this.value=this.save;};
-	this.removeAttribute('disabled');
+    if(this.tagName=='INPUT'){
+        if(this.save){this.value=this.save;};
+        this.removeAttribute('disabled');
+    }
 }
 NodeList.prototype.unlockInput = HTMLCollection.prototype.unlockInput = function() {
-	if(this.save){this.value=this.save;};
-    this.removeAttribute('disabled');
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.unlockInput();}
+    }
 }
 
+/*
+ * Lock or unlock button
+ */
 Element.prototype.lockButton= function() {
-    //this.saveClass=this.className;
-    this.disabled='disabled';
-    this.className='disabled button';
+    if(this.tagName=='BUTTON'){
+        this.classSave=this.className;
+        this.disabled='disabled';
+        this.addClassName('disabled');
+    }
 }
 NodeList.prototype.lockButton = HTMLCollection.prototype.lockButton = function() {
-	//this.saveClass=this.className;
-    this.disabled='disabled';
-    this.className='disabled button';
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.lockButton();}
+    }
 }
 Element.prototype.unlockButton= function() {
-	//if(this.saveClass){this.className=this.saveClass;};
+    if(this.tagName=='BUTTON'){
 	this.removeAttribute('disabled');
-	this.className='blue_bold';
+	this.removeClassName('disabled');
+	if(this.classSave){this.className=this.classSave;};
+    }
 }
 NodeList.prototype.unlockButton = HTMLCollection.prototype.unlockButton = function() {
-	//if(this.saveClass){this.className=this.saveClass;};
-	this.removeAttribute('disabled');
-	this.className='blue_bold';
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.unlockButton();}
+    }
 }
 
+/*
+ * set title element or list
+ */
 Element.prototype.setTitle= function(title) {
-	this.title=title;
+    this.title=title;
 }
 NodeList.prototype.setTitle = HTMLCollection.prototype.setTitle = function(title) {
-	this.title=title;
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.setTitle(title);}
+    }
 }
