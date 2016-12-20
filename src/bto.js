@@ -4,13 +4,17 @@
  * created: 19/12/16
  */
 
+//SET CLASS NAME
 var bto = function(){
+  var classBTO = {};
 
   //SET PROPERTIES
   var properties = {};
+  //SET METHODS
+  var methods = {};
 
   /*
-   * PARAMS URL
+   * Params from url
    * bto.params -> get method 
    */
   var params = {};
@@ -43,7 +47,7 @@ var bto = function(){
       window.location.href = uri + base64(format(template, ctx))
     }
   })();
-  properties.exportToExcel = exportExcel;
+  methods.exportToExcel = exportExcel;
   
   
   
@@ -73,5 +77,10 @@ var bto = function(){
   properties.navigator = navigator.getnameversion;
 
   
-  return properties;
+  
+  //ADD PROPERTIES AND METHODS TO CLASS
+  classBTO.propertie = properties;
+  classBTO.method = methods;
+  
+  return classBTO;
 }();
