@@ -1,10 +1,23 @@
+/*
+ * @Author:Alberto Acuña (Beto)
+ * bto css v1
+ * created: 20/12/16
+ */
 body.bto{padding:0px;margin:0px;border:0px;}
-.bto.center{
+
+/*div positions*/
+.bto.middle{
   top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+  transform:translateY(-50%);
   position:absolute;
 }
+.bto.center{
+  left:50%;
+  transform:translateX(-50%);
+  position:absolute;
+}
+
+/*text positions*/
 .bot.text-center{
   text-align:center;
 }
