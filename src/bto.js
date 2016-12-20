@@ -6,7 +6,7 @@
 
 //SET CLASS NAME
 var bto = function(){
-  var classBTO = {};
+  var main = {};
 
   //SET PROPERTIES
   var properties = {};
@@ -83,9 +83,10 @@ var bto = function(){
   })();
   methods.find = querySel;
   
-  //ADD PROPERTIES AND METHODS TO CLASS
-  classBTO.propertie = properties;
-  classBTO.method = methods;
-  
-  return classBTO;
+  //CALL PROPERTIES USING 'pr'
+  main.pr = properties;
+  //CALL FUNCTIONS USING 'fn'
+  main.fn = methods;
+  //RETURN FUNCTIONS AND PROPERTIES
+  return main;
 }();
