@@ -79,18 +79,18 @@ NodeList.prototype.setDisplay = HTMLCollection.prototype.setDisplay = function(d
 /*
  * Lock or unlock input
  */
-Element.prototype.lockInput= function() {
+Element.prototype.lockInput= function( defaultValue ) {
     if(this.tagName=='INPUT'){
         this.save = this.value;
-        this.value = null;
+        this.value = (defaultValue ? defaultValue : null);
         this.disabled='disabled';
     }
 }
-NodeList.prototype.lockInput = HTMLCollection.prototype.lockInput = function() {
+NodeList.prototype.lockInput = HTMLCollection.prototype.lockInput = function( defaultValue ) {
     var li = this;
     for(var i = li.length - 1; i >= 0; i--) {
         var el = li[i];
-	if(el) {el.lockInput();}
+	if(el) {el.lockInput( defaultValue );}
     }
 }
 Element.prototype.unlockInput= function() {
@@ -159,4 +159,12 @@ NodeList.prototype.setTitle = HTMLCollection.prototype.setTitle = function(title
 Element.prototype.find = function(queryStr){
   var selector = document.querySelectorAll(queryStr);
   return (selector.length>0 ? (selector.length>1 ? selector : selector[0] ) : null );
+}
+
+/*
+ * compare two strings, case insenstive as second parameter
+ */
+String.prototype.equals = function(string,insensitive){
+  if(insensitive){return (this.toString().toUpperCase().trim()==string.toString().toUpperCase().trim() ? true : false);}
+  else{return (this.toString().trim()==string.toString().trim() ? true : false);}
 }
