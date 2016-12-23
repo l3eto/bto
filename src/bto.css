@@ -21,3 +21,16 @@ body.bto{padding:0px;margin:0px;border:0px;}
 .bot.text-center{
   text-align:center;
 }
+
+/*form inputs*/
+input.bto.search {
+    border:2px solid #dadada;
+    border-radius:7px;
+    padding:5px;
+}
+
+input.bto.search:focus {
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow:0 0 10px #9ecaed;
+}
