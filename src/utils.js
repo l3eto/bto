@@ -51,6 +51,21 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function(seconds) 
 }
 
 /*
+ * Clear all elements inside a element
+ */
+Element.prototype.removeChilds = function(){
+    var el = this;
+    setTimeout(function(){while (el.firstChild) {el.removeChild(el.firstChild);};}, (seconds ? seconds : 0)*1000);
+}
+NodeList.prototype.removeChilds = HTMLCollection.prototype.removeChilds = function(seconds) {
+    var li = this;
+    setTimeout(function(){for(var i = li.length - 1; i >= 0; i--) {
+	var el = li[i];
+	if(el && el.parentElement) {el.removeChilds();}
+    }}, (seconds ? seconds : 0)*1000);
+}
+
+/*
  * Modify display getter and setter
  */
 Element.prototype.getDisplay = function(){
