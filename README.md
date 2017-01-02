@@ -1,4 +1,4 @@
 # bto
 Framework bto
 
-Test: https://github.l3eto.io/bto/
+Test: https://l3eto.github.io/bto/
