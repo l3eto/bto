@@ -53,7 +53,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function(seconds) 
 /*
  * Clear all elements inside a element
  */
-Element.prototype.removeChilds = function(){
+Element.prototype.removeChilds = function(seconds){
     var el = this;
     setTimeout(function(){while (el.firstChild) {el.removeChild(el.firstChild);};}, (seconds ? seconds : 0)*1000);
 }
