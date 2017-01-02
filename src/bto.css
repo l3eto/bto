@@ -46,3 +46,14 @@ input.bto.search:focus {
     border-color:#9ecaed;
     box-shadow:0 0 10px #9ecaed;
 }
+
+
+
+
+
+/*customs css*/
+.bto.margin0px{margin:0px!important;}
+.bto.margin10px{margin:10px!important;}
+.bto.margin20px{margin:20px!important;}
+.bto.margin50px{margin:50px!important;}
+.bto.margin100px{margin:100px!important;}
