@@ -1,25 +1,26 @@
 <html>
-  <head>
-    <!--jquery-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!-- bootstrap -->
-    <script type="text/javascript" src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://getbootstrap.com/dist/css/bootstrap.min.css" />
-    <!-- bto -->
-    <script type="text/javascript" src="src/bto.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/bto.css" />
-  </head>
-  <body class="bto">
-    <div class="bto full page">
-      <div class="bto center middle">
-        <form role="search">
-          <!--<input class="bto search" type="text" placeholder=" search ...">-->
-          <div class="input-group">
-            <input type="text" name="keyword" placeholder="search..." class="form-control">
-            <span class="input-group-btn"><button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></span>
-          </div>
-        </form>
-      </div>
+<head>
+  <title>Test Functions BTO Framework</title>
+  <!--jquery-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <!-- bootstrap -->
+  <script type="text/javascript" src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://getbootstrap.com/dist/css/bootstrap.min.css" />
+  <!-- bto -->
+  <script type="text/javascript" src="src/bto.js"></script>
+  <link rel="stylesheet" type="text/css" href="src/bto.css" />
+</head>
+<body class="bto">
+  <div class="bto full page">
+    <div class="bto center middle">
+      <form role="search" method="POST">
+        <!--<input class="bto search" type="text" placeholder=" search ...">-->
+        <div class="input-group">
+          <input type="text" name="q" placeholder="search..." class="form-control">
+          <span class="input-group-btn"><button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></span>
+        </div>
+      </form>
     </div>
-  </body>
+  </div>
+</body>
 </html>
