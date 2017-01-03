@@ -5,8 +5,9 @@
  */
 
 
+
 /*
- * Check if an object is void
+ * Check if an object is empty
  */
 Object.prototype.isEmpty = function() {
     for(var key in this) {if(this.hasOwnProperty(key)){return false;}}
@@ -191,3 +192,26 @@ String.prototype.equals = function(string,insensitive){
   if(insensitive){return (this.toString().toUpperCase().trim()==string.toString().toUpperCase().trim() ? true : false);}
   else{return (this.toString().trim()==string.toString().trim() ? true : false);}
 }
+
+
+
+/*
+ * set automcomplete
+ */
+Element.prototype.autocomplete = function(complete){
+    this.autocomplete = (complete ? "on" : "off");
+}
+NodeList.prototype.autocomplete = HTMLCollection.prototype.autocomplete = function(complete) {
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {ret.push(el.getDisplay());}
+    }
+}
+
+
+
+
+
+
+
