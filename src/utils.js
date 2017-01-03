@@ -205,7 +205,7 @@ NodeList.prototype.autocomplete = HTMLCollection.prototype.autocomplete = functi
     var li = this;
     for(var i = li.length - 1; i >= 0; i--) {
         var el = li[i];
-	if(el) {ret.push(el.getDisplay());}
+	if(el) {el.autocomplete(complete);}
     }
 }
 
