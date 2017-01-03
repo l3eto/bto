@@ -73,7 +73,7 @@ var bto = function(){
 
   /*
    * Find elements
-   * bto.exportToExcel('tableId', 'W3C Example Table');
+   * bto.querySel('#id');
    */
   var querySel = (function() {
     return function(queryStr){
@@ -82,6 +82,18 @@ var bto = function(){
     }
   })();
   methods.find = querySel;
+  
+ 
+  /*
+   * Check if empty
+   * bto.isEmpty("text value example) -> false
+   */
+  var checkEmpty = (function(obj) {
+    for(var key in obj) {if(obj.hasOwnProperty(key)){return false;}}
+    return true;
+  })();
+  methods.isEmpty = checkEmpty;
+  
   
   //CALL PROPERTIES USING 'pr'
   main.pr = properties;
