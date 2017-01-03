@@ -198,10 +198,10 @@ String.prototype.equals = function(string,insensitive){
 /*
  * set automcomplete
  */
-Element.prototype.autocomplete = function(complete){
+Element.prototype.setAutocomplete = function(complete){
     this.autocomplete = (complete ? "on" : "off");
 }
-NodeList.prototype.autocomplete = HTMLCollection.prototype.autocomplete = function(complete) {
+NodeList.prototype.setAutocomplete = HTMLCollection.prototype.setAutocomplete = function(complete) {
     var li = this;
     for(var i = li.length - 1; i >= 0; i--) {
         var el = li[i];
