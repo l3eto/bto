@@ -1,14 +1,16 @@
 /*media query*/
 @media only screen and (max-width: 768px) {
-  .bto.minw250{min-width:0px!important;}
-  .bto.margin40Auto{margin:10px 5px!important;}
 
-  input.bto.search{
-      border-radius:5px;
-      padding:3px 3px 1px 3px;
-  }
-  input.bto.search:focus{
-      box-shadow:0 0 5px #9ecaed;
-  }
+  .bto.minw250.query{min-width:0px!important;}
+
+  .bto.margin40Auto.query{margin:10px 5px!important;}
+
+  input.bto.search.query{border-radius:5px;padding:3px 3px 1px 3px;}
+  input.bto.search.query:focus{box-shadow:0 0 5px #9ecaed;}
+
+  .bto.minw60.query{min-width:50px!important;}
+  .bto.minh60.query{min-height:50px!important;}
+  .bto.maxw70.query{max-width:60px!important;}
+  .bto.maxh70.query{max-height:60px!important;}
 
 }
