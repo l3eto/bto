@@ -29,11 +29,6 @@ body.bto{
   position:absolute;
 }
 
-/*text positions*/
-.bot.text-center{
-  text-align:center;
-}
-
 /*form inputs*/
 input.bto.search {
     border:2px solid #dadada;
@@ -55,6 +50,11 @@ input.bto.search:focus {
 .bto.bgWhite{background-color:white;}
 .bto.bgGris1{background-color:#fafafa;}
 .bto.bgGris2{background-color:#969896;}
+
+/*text-align*/
+.bto.textCenter{text-align:center;}
+.bto.textLeft{text-align:left;}
+.bto.textRight{text-align:right;}
 
 /*margin*/
 .bto.marginAuto{margin:auto!important;}
