@@ -51,9 +51,34 @@ input.bto.search:focus {
 
 
 
-/*customs css*/
+/*background-color*/
+.bto.bgWhite{background-color:white;}
+.bto.bgGris1{background-color:#fafafa;}
+.bto.bgGris2{background-color:#969896;}
+
+/*margin*/
+.bto.marginAuto{margin:auto!important;}
 .bto.margin0px{margin:0px!important;}
 .bto.margin10px{margin:10px!important;}
 .bto.margin20px{margin:20px!important;}
 .bto.margin50px{margin:50px!important;}
 .bto.margin100px{margin:100px!important;}
+
+/*max-width*/
+.bto.mw600{max-width:600px!important;}
+.bto.mw800{max-width:800px!important;}
+.bto.mwFull{max-width:100vw!important;}
+
+/*min-height*/
+.bto.mhFull{min-height:100vh!important;}
+
+
+
+
+
+
+
+
+
+
+
