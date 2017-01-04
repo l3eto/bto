@@ -1,0 +1,14 @@
+/*media query*/
+@media only screen and (max-width: 768px) {
+  .bto.minw250{min-width:0px!important;}
+  .bto.margin40Auto{margin:10px 5px!important;}
+
+  input.bto.search{
+      border-radius:5px;
+      padding:3px 3px 1px 3px;
+  }
+  input.bto.search:focus{
+      box-shadow:0 0 5px #9ecaed;
+  }
+
+}
