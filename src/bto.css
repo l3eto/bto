@@ -42,19 +42,35 @@ input.bto.search:focus {
     box-shadow:0 0 10px #9ecaed;
 }
 
-
+/*BTO CUSTOM CSS*/
 
 
 
 /*background-color*/
-.bto.bgWhite{background-color:white;}
-.bto.bgGris1{background-color:#fafafa;}
-.bto.bgGris2{background-color:#e5e5e5;}
+.bto.bgWhite{background-color:white!important;}
+.bto.bgGris1{background-color:#fafafa!important;}
+.bto.bgGris2{background-color:#efefef!important;}
+.bto.bgGris3{background-color:#e5e5e5!important;}
+
+/*border*/
+.bto.borderGris{border: 1px solid #efefef;}
+
+/*border-radius*/
+.bto.borderRadius0px{border-radius: 0px!important;}
+.bto.borderRadius2px{border-radius: 2px!important;}
+.bto.borderRadius5px{border-radius: 5px!important;}
+.bto.borderRadius10px{border-radius: 10px!important;}
+
+/*border width*/
+.bto.border1px{border-width:1px!important;}
+.bto.border2px{border-width:2px!important;}
+.bto.border4px{border-width:4px!important;}
+.bto.border5px{border-width:5px!important;}
 
 /*text-align*/
-.bto.textCenter{text-align:center;}
-.bto.textLeft{text-align:left;}
-.bto.textRight{text-align:right;}
+.bto.textCenter{text-align:center!important;}
+.bto.textLeft{text-align:left!important;}
+.bto.textRight{text-align:right!important;}
 
 /*margin*/
 .bto.marginAuto{margin:auto!important;}
@@ -71,14 +87,3 @@ input.bto.search:focus {
 
 /*min-height*/
 .bto.mhFull{min-height:100vh!important;}
-
-
-
-
-
-
-
-
-
-
-
