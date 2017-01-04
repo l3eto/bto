@@ -67,6 +67,12 @@ input.bto.search:focus {
 .bto.border4px{border-width:4px!important;}
 .bto.border5px{border-width:5px!important;}
 
+/*no border*/
+.bto.noBorderTop{border-top:none!important;}
+.bto.noBorderBottom{border-bottom:none!important;}
+.bto.noBorderLeft{border-left:none!important;}
+.bto.noBorderRigth{border-right:none!important;}
+
 /*text-align*/
 .bto.textCenter{text-align:center!important;}
 .bto.textLeft{text-align:left!important;}
