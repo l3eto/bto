@@ -101,10 +101,41 @@ NodeList.prototype.setDisplay = HTMLCollection.prototype.setDisplay = function(d
 }
 
 /*
+ * Lock or unlock checkbox
+ */
+Element.prototype.lockCheckBox= function( defaultValue ) {
+    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='CHECKBOX'){
+    	this.save = this.checked;
+    	this.checked = (defaultValue!=null ? defaultValue : null);
+    	this.disabled='disabled';
+    }
+}
+NodeList.prototype.lockCheckBox = HTMLCollection.prototype.lockCheckBox = function( defaultValue ) {
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.lockCheckBox( defaultValue );}
+    }
+}
+Element.prototype.unlockCheckBox= function() {
+    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='CHECKBOX'){
+    	if(this.save){this.checked=this.save;};
+    	this.removeAttribute('disabled');
+    }
+}
+NodeList.prototype.unlockCheckBox = HTMLCollection.prototype.unlockCheckBox = function() {
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.unlockInput();}
+    }
+}
+
+/*
  * Lock or unlock input
  */
 Element.prototype.lockInput= function( defaultValue ) {
-    if(this.tagName=='INPUT'){
+    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT'){
         this.save = this.value;
         this.value = (defaultValue ? defaultValue : null);
         this.disabled='disabled';
@@ -118,7 +149,7 @@ NodeList.prototype.lockInput = HTMLCollection.prototype.lockInput = function( de
     }
 }
 Element.prototype.unlockInput= function() {
-    if(this.tagName=='INPUT'){
+    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT'){
         if(this.save){this.value=this.save;};
         this.removeAttribute('disabled');
     }
@@ -135,7 +166,7 @@ NodeList.prototype.unlockInput = HTMLCollection.prototype.unlockInput = function
  * Lock or unlock button
  */
 Element.prototype.lockButton= function() {
-    if(this.tagName=='BUTTON'){
+    if(this.tagName=='BUTTON' || (this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' ||(this.type.toUpperCase()=='SUBMIT' ))){
         this.classSave=this.className;
         this.disabled='disabled';
         this.addClassName('disabled');
@@ -149,7 +180,7 @@ NodeList.prototype.lockButton = HTMLCollection.prototype.lockButton = function()
     }
 }
 Element.prototype.unlockButton= function() {
-    if(this.tagName=='BUTTON'){
+    if(this.tagName=='BUTTON' || (this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' ||(this.type.toUpperCase()=='SUBMIT' ))){
 	this.removeAttribute('disabled');
 	this.removeClassName('disabled');
 	if(this.classSave){this.className=this.classSave;};
