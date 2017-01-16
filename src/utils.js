@@ -7,6 +7,12 @@
 
 
 /*
+ * Set foreach function to elements list
+ */
+NodeList.prototype.each = Array.prototype.forEach;
+
+
+/*
  * Check if an object is empty
  */
 Object.prototype.isEmpty = function() {
