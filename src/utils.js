@@ -189,17 +189,16 @@ NodeList.prototype.unlockCheckBox = HTMLCollection.prototype.unlockCheckBox = fu
 /*
  * Set value of checkbox
  */
-
-Element.prototype.checked= function( value ) {
+Element.prototype.check= function( value ) {
     if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='CHECKBOX'){
     	this.checked = (value!=null ? value : true);
     }
 }
-NodeList.prototype.lockCheckBox = HTMLCollection.prototype.lockCheckBox = function( defaultValue ) {
+NodeList.prototype.check = HTMLCollection.prototype.check = function( defaultValue ) {
     var li = this;
     for(var i = li.length - 1; i >= 0; i--) {
         var el = li[i];
-	if(el) {el.checked( defaultValue );}
+	if(el) {el.check( defaultValue );}
     }
 }
 
