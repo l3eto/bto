@@ -39,9 +39,28 @@ String.prototype.padLeft = function(value, size) {
 }
 
 /*
+ *
+ */
+String.prototype.getWidth = function (fontSize) {
+    var el;
+    var f = fontSize || 12;
+    f += 'px arial';
+    el = document.createElement('div');
+    el.style.position = 'absolute';
+    el.style.float = "left";
+    el.style.whiteSpace = 'nowrap';
+    el.style.visibility = 'hidden';
+    el.style.font = f;
+    el.innerHTML = this;
+    el = document.body.appendChild(el);
+    w = el.offsetWidth;
+    el.parentNode.removeChild(el);
+    return w;
+}
+
+/*
  * Add and Remove ClassName
  */
-
 Date.prototype.toFormattedString = function(f) {
     var nm = this.getMonthName();
     var nd = this.getDayName();
