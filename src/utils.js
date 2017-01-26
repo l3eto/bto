@@ -273,7 +273,10 @@ NodeList.prototype.unlockInput = HTMLCollection.prototype.unlockInput = function
  * Lock or unlock button
  */
 Element.prototype.lockButton= function() {
-    if(this.tagName=='BUTTON' || (this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' ||(this.type.toUpperCase()=='SUBMIT' ))){
+    if(
+    this.tagName=='BUTTON' || this.tagName.toUpperCase()=='INPUT' &&
+    (this.type.toUpperCase()=='BUTTON' || this.type.toUpperCase()=='SUBMIT')
+    ){
         this.classSave=this.className;
         this.disabled='disabled';
         this.addClassName('disabled');
@@ -287,17 +290,17 @@ NodeList.prototype.lockButton = HTMLCollection.prototype.lockButton = function()
     }
 }
 Element.prototype.unlockButton= function() {
-    if(this.tagName=='BUTTON' || (this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' ||(this.type.toUpperCase()=='SUBMIT' ))){
-	this.removeAttribute('disabled');
-	this.removeClassName('disabled');
-	if(this.classSave){this.className=this.classSave;};
-    }
+	if (this.tagName.toUpperCase()=='BUTTON' || (this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' || this.type.toUpperCase()=='SUBMIT'))) {
+		this.removeAttribute('disabled');
+		this.removeClassName('disabled');
+		if(this.classSave){this.className=this.classSave;};
+	}
 }
 NodeList.prototype.unlockButton = HTMLCollection.prototype.unlockButton = function() {
     var li = this;
     for(var i = li.length - 1; i >= 0; i--) {
         var el = li[i];
-	if(el) {el.unlockButton();}
+		if(el) {el.unlockButton();}
     }
 }
 
@@ -346,7 +349,6 @@ NodeList.prototype.setAutocomplete = HTMLCollection.prototype.setAutocomplete = 
 	if(el) {el.autocomplete(complete);}
     }
 }
-
 
 
 
