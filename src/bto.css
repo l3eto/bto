@@ -32,8 +32,11 @@ div.menu.compact.vertical{
    -ms-flex-direction:column;
    flex-direction:column;
 }
-div.menu.compact>div.option+div.option{
+div.menu.compact.horizontal>div.option+div.option{
    border-left:1px solid rgba(150,150,150,1);
+}
+div.menu.compact.vertical>div.option+div.option{
+   border-top:1px solid rgba(150,150,150,1);
 }
 div.menu.compact>div.option{
    text-align:center;
