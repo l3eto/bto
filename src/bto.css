@@ -4,6 +4,42 @@
  * created: 20/12/16
  */
 
+/*menu compact*/
+div.menu:hover{
+   cursor:pointer;
+}
+div.menu.compact{
+   color:#222;
+   border-radius:5px;
+   border:1px solid rgba(150,150,150,1);
+   display: -ms-flex;
+   display: -webkit-flex;
+   display:flex;
+   -webkit-flex-direction:row;
+   -ms-flex-direction:row;
+   flex-direction:row;
+}
+div.menu.compact.vertical{
+   -webkit-flex-direction:column;
+   -ms-flex-direction:column;
+   flex-direction:column;
+}
+div.menu.compact>div.option+div.option{
+   border-left:1px solid rgba(150,150,150,1);
+}
+div.menu.compact>div.option{
+   text-align:center;
+   padding:5px 8px;
+   flex:1;
+}
+div.menu.compact>div.option:hover,
+div.menu.compact>div.option.active{
+   background-color: rgba(150,150,150,.2);
+}
+div.menu.compact>div.option.active:hover{
+   background-color: rgba(150,150,150,.3);
+}
+
 /*search input*/
 input.bto.search{
     border:2px solid #dadada;
