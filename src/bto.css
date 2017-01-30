@@ -5,6 +5,14 @@
  */
 
 /*menu compact*/
+/* example:
+<div class="menu compact horizontal">
+    <div class="option">works</div>
+    <div class="option active">works</div>
+    <div class="option">works</div>
+    <div class="option">works</div>
+  </div>
+*/
 div.menu:hover{
    cursor:pointer;
 }
