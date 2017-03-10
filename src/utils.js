@@ -105,7 +105,7 @@ Object.prototype.isEmpty = function() {
 }
 
 /*
- * Add and Remove ClassName
+ * Add ClassName
  */
 Element.prototype.addClassName = function(addClasses) {
     if(this.className.length==0){this.className=addClasses;}
@@ -120,6 +120,17 @@ Element.prototype.addClassName = function(addClasses) {
     	}
     }
 }
+NodeList.prototype.addClassName = HTMLCollection.prototype.addClassName = function(addClasses) {
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+	var el = li[i];
+	if(el) {el.addClassName(addClasses);}
+    }
+}
+
+/*
+ * Remove ClassName
+ */
 Element.prototype.removeClassName = function(removeClasses){
     if(this.className.length>0){
         var oldClasses = this.className.split(" ");
@@ -131,6 +142,13 @@ Element.prototype.removeClassName = function(removeClasses){
             for (var j = 0; j < delClasses.length; j++) {if(oldClass==delClasses[j]){removeClass=true;}}
             if(!removeClass){this.addClassName(oldClass);}
         }
+    }
+}
+NodeList.prototype.removeClassName = HTMLCollection.prototype.removeClassName = function(removeClasses) {
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+	var el = li[i];
+	if(el) {el.removeClassName(removeClasses);}
     }
 }
 
@@ -190,36 +208,6 @@ NodeList.prototype.setDisplay = HTMLCollection.prototype.setDisplay = function(d
     }
 }
 
-/*
- * Lock or unlock checkbox
- */
-Element.prototype.lockCheckBox= function( defaultValue ) {
-    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='CHECKBOX'){
-    	this.save = this.checked;
-    	this.checked = (defaultValue!=null ? defaultValue : null);
-    	this.disabled='disabled';
-    }
-}
-NodeList.prototype.lockCheckBox = HTMLCollection.prototype.lockCheckBox = function( defaultValue ) {
-    var li = this;
-    for(var i = li.length - 1; i >= 0; i--) {
-        var el = li[i];
-	if(el) {el.lockCheckBox( defaultValue );}
-    }
-}
-Element.prototype.unlockCheckBox= function() {
-    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='CHECKBOX'){
-    	if(this.save){this.checked=this.save;};
-    	this.removeAttribute('disabled');
-    }
-}
-NodeList.prototype.unlockCheckBox = HTMLCollection.prototype.unlockCheckBox = function() {
-    var li = this;
-    for(var i = li.length - 1; i >= 0; i--) {
-        var el = li[i];
-	if(el) {el.unlockInput();}
-    }
-}
 
 /*
  * Set value of checkbox
@@ -239,68 +227,76 @@ NodeList.prototype.check = HTMLCollection.prototype.check = function( defaultVal
 
 
 /*
- * Lock or unlock input
+ * Lock or disbale Element
  */
-Element.prototype.lockInput= function( defaultValue ) {
-    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT'){
-        this.save = this.value;
-        this.value = (defaultValue ? defaultValue : null);
+Element.prototype.lock= function( defaultValue ) {
+    //INPUTS TEXT
+    if (this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT') {
+	if (defaultValue) {
+	    this.save = this.value;
+            this.value = defaultValue;
+	} 
         this.disabled='disabled';
-    }
-}
-NodeList.prototype.lockInput = HTMLCollection.prototype.lockInput = function( defaultValue ) {
-    var li = this;
-    for(var i = li.length - 1; i >= 0; i--) {
-        var el = li[i];
-	if(el) {el.lockInput( defaultValue );}
-    }
-}
-Element.prototype.unlockInput= function() {
-    if(this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT'){
-        if(this.save){this.value=this.save;};
-        this.removeAttribute('disabled');
-    }
-}
-NodeList.prototype.unlockInput = HTMLCollection.prototype.unlockInput = function() {
-    var li = this;
-    for(var i = li.length - 1; i >= 0; i--) {
-        var el = li[i];
-	if(el) {el.unlockInput();}
-    }
-}
-
-/*
- * Lock or unlock button
- */
-Element.prototype.lockButton= function() {
-    if(
-    this.tagName=='BUTTON' || this.tagName.toUpperCase()=='INPUT' &&
-    (this.type.toUpperCase()=='BUTTON' || this.type.toUpperCase()=='SUBMIT')
-    ){
-        this.classSave=this.className;
+    //INPUT BUTTONS OR SUBMITS
+    } else if (this.tagName.toUpperCase()=='BUTTON' || 
+	       this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' || this.type.toUpperCase()=='SUBMIT')) {
         this.disabled='disabled';
         this.addClassName('disabled');
-    }
-}
-NodeList.prototype.lockButton = HTMLCollection.prototype.lockButton = function() {
-    var li = this;
-    for(var i = li.length - 1; i >= 0; i--) {
-        var el = li[i];
-	if(el) {el.lockButton();}
-    }
-}
-Element.prototype.unlockButton= function() {
-	if (this.tagName.toUpperCase()=='BUTTON' || (this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' || this.type.toUpperCase()=='SUBMIT'))) {
-		this.removeAttribute('disabled');
-		this.removeClassName('disabled');
-		if(this.classSave){this.className=this.classSave;};
+    //INPUT CHECKBOX
+    } else if (this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='CHECKBOX') {
+	if (defaultValue) {
+	    this.save = this.checked;
+    	    this.checked = defaultValue;
 	}
+    	this.disabled='disabled';
+    //SELECT
+    } else if (this.tagName.toUpperCase()=='SELECT') {
+	if (defaultValue) {
+	    this.save = this.value;
+	    this.value = defaultValue;
+	}
+        this.disabled='disabled';
+    //IMAGE CLICK
+    } else if (this.tagName.toUpperCase()=='IMG') {
+	this.save = this.onclick;
+	this.onclick = null;
+    }	    
 }
-NodeList.prototype.unlockButton = HTMLCollection.prototype.unlockButton = function() {
+NodeList.prototype.lock = HTMLCollection.prototype.lock = function( defaultValue ) {
     var li = this;
     for(var i = li.length - 1; i >= 0; i--) {
         var el = li[i];
-		if(el) {el.unlockButton();}
+	if(el) {el.lock( defaultValue );}
+    }
+}
+Element.prototype.unlock= function() {
+    //INPUTS TEXT
+    if (this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT') {
+        if (this.save) {this.value=this.save;};
+        this.removeAttribute('disabled');
+    //INPUT BUTTONS OR SUBMITS    
+    } else if (this.tagName.toUpperCase()=='BUTTON' || 
+	       this.tagName.toUpperCase()=='INPUT' && (this.type.toUpperCase()=='BUTTON' || this.type.toUpperCase()=='SUBMIT')) {
+	this.removeAttribute('disabled');
+	this.removeClassName('disabled');
+    //INPUT CHECKBOX
+    } else if (this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='CHECKBOX') {
+    	if (this.save) {this.checked=this.save;};
+    	this.removeAttribute('disabled');
+    //SELECT
+    } else if(this.tagName.toUpperCase()=='SELECT'){
+	if (this.save) {this.value=this.save;};
+	this.removeAttribute('disabled');
+     //IMAGE CLICK
+    } else if (this.tagName.toUpperCase()=='IMG') {
+	if (this.save) {this.onclick=this.save;};
+    }
+}
+NodeList.prototype.unlock = HTMLCollection.prototype.unlock = function() {
+    var li = this;
+    for(var i = li.length - 1; i >= 0; i--) {
+        var el = li[i];
+	if(el) {el.unlock();}
     }
 }
 
