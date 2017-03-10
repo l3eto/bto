@@ -230,6 +230,7 @@ NodeList.prototype.check = HTMLCollection.prototype.check = function( defaultVal
  * Lock or disbale Element
  */
 Element.prototype.lock= function( defaultValue ) {
+    this.lock = true;
     //INPUTS TEXT
     if (this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT') {
 	if (defaultValue) {
@@ -260,7 +261,10 @@ Element.prototype.lock= function( defaultValue ) {
     } else if (this.tagName.toUpperCase()=='IMG') {
 	this.save = this.onclick;
 	this.onclick = null;
-    }	    
+    //FORM
+    } else if (this.tagName.toUpeerCase()=='FORM') {
+	this.find('input,select,button,img').lock();
+    }
 }
 NodeList.prototype.lock = HTMLCollection.prototype.lock = function( defaultValue ) {
     var li = this;
@@ -270,6 +274,7 @@ NodeList.prototype.lock = HTMLCollection.prototype.lock = function( defaultValue
     }
 }
 Element.prototype.unlock= function() {
+    this.lock = false;
     //INPUTS TEXT
     if (this.tagName.toUpperCase()=='INPUT' && this.type.toUpperCase()=='TEXT') {
         if (this.save) {this.value=this.save;};
@@ -290,6 +295,9 @@ Element.prototype.unlock= function() {
      //IMAGE CLICK
     } else if (this.tagName.toUpperCase()=='IMG') {
 	if (this.save) {this.onclick=this.save;};
+    //FORM
+    } else if (this.tagName.toUpeerCase()=='FORM') {
+	this.find('input,select,button,img').unlock();
     }
 }
 NodeList.prototype.unlock = HTMLCollection.prototype.unlock = function() {
