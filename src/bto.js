@@ -114,6 +114,27 @@ var bto = function(){
     return true;
   })();
   methods.isEmpty = checkEmpty;
+  
+  
+  /*
+   * On load element event
+   * bto.onLoadElement("#elementId",fn) -> var fn = function(elementLoaded){console.log(elementLoaded);}
+   */
+  var onLoadElement = function(queryStr,callback) {
+	  if (typeof queryStr==="string" && typeof callback==="function") {console.log("Error: wrong type of args");return null;}
+	  var seconds = 0;
+	  var intTab = setInterval(function(){checkEl();},1);
+	  var checkEl = function () {
+		  seconds++;
+		  var el = document.find(queryStr);
+	    if(el!=null && el.length!=0) {
+  	    clearInterval(intTab);
+  	    console.log("founded element after "+seconds/1000+" seconds: ");
+  	    callback(el);
+  	  }
+  	}
+  }
+  methods.isLoaded = onLoadElement;
 
 
   //CALL PROPERTIES USING 'pr'
