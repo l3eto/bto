@@ -38,10 +38,29 @@
     <script type="text/javascript" src="src/bto.js"></script>
     <link rel="stylesheet" type="text/css" href="src/bto.css"/>
     <link rel="stylesheet" type="text/css" href="src/bto.query.css"/>
+    <!-- custom -->
+    <script type="text/javascript">
+      $(function() {
+		/**SCROOLING EVENT FOR HEADER**/
+		scrollingHeader();
+		$(window).scroll(function (event) {scrollingHeader();});
+});
+
+var scrollingHeader = function(){
+		var sTop = $(window).scrollTop();
+		var el = $('header.follow');
+		if (sTop>=el.height()) {
+				el.addClass("active");
+		} else {
+				if (el.hasClass("active")) {el.removeClass("active");}
+		}
+}
+      
+    </script>
   </head>
   <body class="bto">
     <!-- header -->
-    <header>
+    <header class="follow">
       <div class="wrapper bto bgGris2 minh30">
         <div class="bto textCenter"><span>THIS IS A TEST HEADER CENTERED</span></div>
       </div>
