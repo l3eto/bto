@@ -3,6 +3,29 @@
  * bto css v1
  * created: 20/12/16
  */
+* {
+    border:0;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body.bto {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*HEADER*/
+body.bto>header {width:100%;display:flex;}
+body.bto>header>.wrapper {flex:1;position:relative;}
+/*BODY*/
+body.bto main {width: 100%;flex:1;display:flex;}
+body.bto>main>.wrapper {flex:1;position:relative;}
+/*FOOTER*/
+body.bto>header {width:100%;display:flex;}
+body.bto>header>.wrapper {flex:1;position:relative;}
+
 
 /*menu compact*/
 /* example:
@@ -80,7 +103,6 @@ input.bto.search:focus{
    line-height: 0.1em;
    margin: 10px 0 20px;
 }
-
 .bto.lineH > span{
    background:#fff;
    padding:0 10px;
@@ -100,9 +122,9 @@ input.bto.search:focus{
 .bto.container{display:block!important;max-width:100%!important;min-width:100%!important;width:1px!important;max-height:100%!important;min-height:100%!important;height:1px!important;}
 
 /*position*/
-.bto.centerXY{left:50%;top:50%;transform:translate(-50%,-50%);position:inherit;}
-.bto.centerX{left:50%;transform:translateX(-50%);position:inherit;}
-.bto.centerY{top:50%;transform:translateY(-50%);position:inherit;}
+.bto.posAbs50X{left:50%;transform:translateX(-50%);position:absolute;}
+.bto.posAbs50Y{top:50%;transform:translateY(-50%);position:absolute;}
+.bto.posAbs50X.posAbs50Y{left:50%;top:50%;transform:translate(-50%,-50%);position:absolute;}
 
 /*positions*/
 .bto.posRel{position:relative!important;}
@@ -112,9 +134,14 @@ input.bto.search:focus{
 /*background-color*/
 .bto.noBgColor{background-color:none!important;}
 .bto.bgWhite{background-color:white!important;}
+
+/*gris scale*/
 .bto.bgGris1{background-color:#fafafa!important;}
 .bto.bgGris2{background-color:#efefef!important;}
 .bto.bgGris3{background-color:#e5e5e5!important;}
+
+/*red scale*/
+.bto.bgRed1{background-color:rgba(200,125,125,1);}
 
 /*border*/
 .bto.borderGris1{border:1px solid #efefef;}
@@ -145,6 +172,8 @@ input.bto.search:focus{
 .bto.textCenter{text-align:center!important;}
 .bto.textLeft{text-align:left!important;}
 .bto.textRight{text-align:right!important;}
+.bto.textMiddle{display:table;height:100%;width:100%;}
+.bto.textMiddle>span{display:table-cell;vertical-align:middle;}
 
 /*margin px*/
 .bto.noMargin{margin:0px!important;}
@@ -183,6 +212,7 @@ input.bto.search:focus{
 /*height*/
 .bto.h1{height:1px!important;}
 .bto.h30{height:30px!important;}
+.bto.h30p{height:30%!important;}
 .bto.hFull{height:100%!important;}
 .bto.autoh{height:auto!important;}
 
