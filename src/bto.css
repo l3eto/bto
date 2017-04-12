@@ -19,6 +19,9 @@ body.bto {
 /*HEADER*/
 body.bto>header {width:100%;display:flex;}
 body.bto>header>.wrapper {flex:1;position:relative;}
+body.bto>header.follow {
+		position:fixed;
+}
 /*BODY*/
 body.bto main {width: 100%;flex:1;display:flex;}
 body.bto>main>.wrapper {flex:1;position:relative;}
