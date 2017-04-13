@@ -26,6 +26,7 @@ body.bto>main>.wrapper {position:relative;}
 body.bto>footer {width:100%;display:table;position:absolute;bottom:0;}
 body.bto>footer>.wrapper {position:relative;}
 
+.wrapper>.bto{position:relative;}
 
 /*menu compact*/
 /* example:
@@ -186,6 +187,7 @@ input.bto.search:focus{
 .bto.margin40Auto{margin:40px auto!important;}
 
 /*margin pxpx*/
+.bto.margin20x0{margin:20px 0px!important;}
 .bto.margin20x10{margin:20px 10px!important;}
 
 /*width*/
@@ -212,6 +214,9 @@ input.bto.search:focus{
 /*height*/
 .bto.h1{height:1px!important;}
 .bto.h30{height:30px!important;}
+.bto.h120{height:120px!important;}
+.bto.h200{height:200px!important;}
+.bto.h500{height:500px!important;}
 .bto.h30p{height:30%!important;}
 .bto.hFull{height:100%!important;}
 .bto.autoh{height:auto!important;}
@@ -221,6 +226,7 @@ input.bto.search:focus{
 .bto.minh50{min-height:50px!important;}
 .bto.minh60{min-height:60px!important;}
 .bto.minh90{min-height:90px!important;}
+.bto.minh300{min-height:300px!important;}
 .bto.minhFull{min-height:100vh!important;}
 
 /*max-height*/
@@ -230,6 +236,8 @@ input.bto.search:focus{
 /*padding*/
 .bto.noPadding{padding:0px!important;}
 .bto.padding10{padding:10px!important;}
+.bto.padding10x0{padding:10px 0px!important;}
+.bto.padding20x0{padding:20px 0px!important;}
 
 /*box*/
 .bto.box1{box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);}
