@@ -147,6 +147,7 @@ var bto = function(){
   main.fn = methods;
 	
   console.log('bto framework loaded ...');
+	console.log($);
 	
   //RETURN FUNCTIONS AND PROPERTIES
   return main;
