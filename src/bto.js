@@ -5,7 +5,7 @@
  */
 
 //SET CLASS NAME
-var bto = function(){
+var bto = function(){	
   var main = {};
 
   //SET PROPERTIES
@@ -145,6 +145,9 @@ var bto = function(){
   main.pr = properties;
   //CALL FUNCTIONS USING 'fn'
   main.fn = methods;
+	
+  console.log('bto framework loaded ...');
+	
   //RETURN FUNCTIONS AND PROPERTIES
   return main;
 }();
