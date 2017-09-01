@@ -12,6 +12,31 @@
 NodeList.prototype.each = Array.prototype.forEach;
 
 
+
+/*
+ * Extends Class using Function
+ */
+Function.prototype.extends=function(ParentClass) {
+    this.prototype = new ParentClass();
+    this.prototype.constructor = this;
+}
+
+
+
+/*
+ * Extends Class using Objects
+ */
+Object.prototype.extend = function(obj) {
+   for (var i in obj) {
+      if (obj.hasOwnProperty(i)) {
+         this[i] = obj[i];
+      }
+   }
+};
+
+
+
+
 /*
  * Array suffle as return
  */
