@@ -1,4 +1,4 @@
-function parseHTML(function(){
+var parseHTML = (function(){
 	var div = document.createElement('div');
 	return function(html){
 		div.innerHTML = html;
