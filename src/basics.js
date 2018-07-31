@@ -1,3 +1,12 @@
+function parseHTML(function(){
+	var div = document.createElement('div');
+	return function(html){
+		div.innerHTML = html;
+		var el = div.firstChild;
+		return div.removeChild(el);
+	};
+})();
+
 function formatHora(horaCamp, missatgeError) {
 	var iChars = '0123456789:';
 	var caracterErroni = false;
